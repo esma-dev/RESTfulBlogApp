@@ -1,4 +1,4 @@
-<h1>INDEX PAGE</h1>
+<% include ./partials/header.ejs %>
 
 <% blogs.forEach((blog) => { %>
 	<div>
@@ -8,3 +8,5 @@
 		<p><%= blog.body %></p>
 	</div>
 <% }) %>
+
+<% include ./partials/footer.ejs%>

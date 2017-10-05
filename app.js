@@ -26,11 +26,30 @@ app.get("/", (req, res, next) => {
 	res.redirect("/blogs");
 });
 
+//INDEX ROUTE
 app.get("/blogs", (req, res, next) => {
 	Blog.find({}, (err, blogs) => {
 		if(err) console.log("ERROR: ", err);
 		else {
 			res.render("index", {blogs: blogs});
+		}
+	});
+});
+
+//NEW ROUTE
+app.get("/blogs/new", (req, res, next) => {
+	res.render("new");
+});
+
+//CREATE ROUTE
+app.post("/blogs", (req, res, next) => {
+	//create a new blog post
+	const newBlog = req.body.blog;
+	Blog.create(newBlog, (err, blog) => {
+		if(err) res.render("new");
+		else {
+			//redirect
+			res.redirect("/blogs");
 		}
 	});
 });
