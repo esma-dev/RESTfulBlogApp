@@ -54,6 +54,18 @@ app.post("/blogs", (req, res, next) => {
 	});
 });
 
+//SHOW ROUTE
+app.get("/blogs/:id", (req, res, next) => {
+	const blogId = req.params.id;
+	//find blog post with that particular id
+	Blog.findById(blogId, (err, blogPost) => {
+		if(err) res.redirect("/blogs");
+		else {
+			res.render("show", {blog: blogPost});
+		}
+	});
+});
+
 app.listen(3000, () => {
 	console.log("THE SERVER IS UP AND RUNNING!!!");
 });
