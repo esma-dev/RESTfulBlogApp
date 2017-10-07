@@ -1,4 +1,4 @@
-<% include partials/header %>
+<% include ./partials/header %>
 
 <div class="ui main text container segment">
 	<div class="ui huge header"><%= blog.title%></div>
@@ -11,11 +11,12 @@
 			<div class="description">
 				<p><%- blog.body %></p>
 			</div>
+			<a href="/blogs/<%= blog._id %>/edit" class="ui orange basic button">EDIT</a>
+			<form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST" id="delete">
+				<button class="ui red basic button">DELETE</button>
+			</form>
 		</div>
 	</div>
-
-	
-	
 </div>
 
-<% include partials/footer %>
+<% include ./partials/footer %>
